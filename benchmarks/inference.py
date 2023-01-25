@@ -9,9 +9,9 @@ from src.models.ssm_seq import SSMLMHeadModel
 
 
 parser = argparse.ArgumentParser(description='H3 generation benchmarking')
-parser.add_argument('--dmodel', type=int, default=1024)
+parser.add_argument('--dmodel', type=int, default=768)
 parser.add_argument('--nlayer', type=int, default=12)
-parser.add_argument('--attn-layer-idx', type=list, default=None)
+parser.add_argument('--attn-layer-idx', type=list, default=[2, 8])
 parser.add_argument('--nheads', type=int, default=16)
 parser.add_argument('--ckpt', type=str, default=None)
 parser.add_argument('--promptlen', type=int, default=1024)
