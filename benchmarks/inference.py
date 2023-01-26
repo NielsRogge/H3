@@ -48,6 +48,14 @@ for name, module in model.named_modules():
     if isinstance(module, (torch.nn.Linear, torch.nn.Embedding, torch.nn.LayerNorm)):
         module.to(dtype=dtype)
 
+print("Single forward pass...")
+input_ids = torch.tensor([[101]], device=device)
+
+with torch.no_grad():
+    outputs = model(input_ids)
+    logits = outputs.logits
+    print("First values of logits:", logits[0,:3,:3])
+
 print("Generating text...")
 inputs = tokenizer('I enjoy walking with my cute dog', return_tensors='pt').to(device)
 input_ids = inputs.input_ids.to(device)
